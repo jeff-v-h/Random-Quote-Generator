@@ -10,12 +10,6 @@ var quotes = [
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// ??This is not needed as we are using printQuote to display final HTML string to the page
-/*function print(html) {
-  html = document.getElementById('quote-box').innerHTML;
-  return html;
-}*/
-
 //function to obtain a random number from 0 to 4
 function randomNumber() {
   var number = Math.floor(Math.random() * 5);
@@ -30,17 +24,17 @@ function getRandomQuote() {
 
 function printQuote() {
   var quoteObject = getRandomQuote();
-  //html = document.getElementById('quote-box').innerHTML;
   html = '<p class="quote">' + quoteObject.quote + '</p> <p class="source">' + quoteObject.source;
-  if (quoteObject.citation !== ' ') {
+  if (quoteObject.citation !== ' ') {   //if there is a citation, it will be added to the html
     html += '<span class="citation">' + quoteObject.citation + '</span>';
   }
-  if (quoteObject.year !== ' ') {
+  if (quoteObject.year !== ' ') { //if there is a year, it will be added to the html
     html += '<span class="year">' + quoteObject.year + '</span>';
   }
   html += '</p>';
+  document.getElementById('quote-box').innerHTML = html; // obtains html in the quote-box div and replaces with 'html'
   return html;
 }
-// How to use this >>>>>>>>>>>>document.getElementById('quote-box').innerHTML;
+
 printQuote();
 console.log(html);
